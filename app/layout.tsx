@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { siteUrl } from './profile';
 import './globals.css';
-const title = 'Bilal Muhazzin | Digital Marketing & SEO Specialist in Mangaluru';
-const description = 'Bilal Muhazzin is a digital marketing specialist in Mangaluru, India. Explore his experience in SEO, Google Ads, Meta Ads, social media and lead generation.';
+const title = 'Bilal Muhazzin | Digital Marketing Specialist in Mangaluru';
+const description = 'Digital Marketing Specialist at Komquest Solutions in Mangaluru. Explore Bilal Muhazzin’s SEO, Google Ads, Meta Ads and social media experience.';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), title, description,
   alternates: { canonical: '/' },
