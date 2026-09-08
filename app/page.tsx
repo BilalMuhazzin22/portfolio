@@ -6,7 +6,7 @@ const structuredData = {
   '@context': 'https://schema.org', '@type': 'ProfilePage', '@id': `${siteUrl}/#profile`, url: `${siteUrl}/`,
   mainEntity: { '@type': 'Person', '@id': `${siteUrl}/#person`, name: 'Bilal Muhazzin', url: `${siteUrl}/`, jobTitle: 'Digital Marketing Specialist',
     description: 'Digital marketing specialist in Mangaluru with experience in SEO, Google Ads, Meta Ads, social media management and lead generation.',
-    email, telephone: '+917019228564', sameAs: [linkedin],
+    image: `${siteUrl}/bilal-muhazzin-portrait.webp`, email, telephone: '+917019228564', sameAs: [linkedin],
     address: { '@type': 'PostalAddress', addressLocality: 'Mangaluru', addressRegion: 'Karnataka', addressCountry: 'IN' },
     worksFor: { '@type': 'Organization', name: 'Komquest Solutions' },
     alumniOf: [{ '@type': 'EducationalOrganization', name: 'upGrad' }, { '@type': 'CollegeOrUniversity', name: 'St. Aloysius (Deemed to be University)' }],
@@ -20,7 +20,7 @@ export default function Home() {
     <header className="header"><a className="wordmark" href="#main" aria-label="Bilal Muhazzin home">bm<span>.</span></a><nav aria-label="Main navigation"><a href="#expertise">Skills</a><a href="#experience">Experience</a><a href="#education">Education</a><a className="nav-contact" href="#contact">Contact <Arrow diagonal /></a></nav></header>
     <main id="main">
       <section className="hero" aria-labelledby="name">
-        <img className="hero-image" src="/optical-prism-hero.png" width="1536" height="1024" alt="" fetchPriority="high" />
+        <div className="portrait-frame"><img className="portrait-image" src="/bilal-muhazzin-portrait.webp" width="1122" height="1402" alt="Bilal Muhazzin in a black blazer and white shirt" fetchPriority="high" /></div>
         <div className="hero-content"><p className="location">Digital marketing specialist · Mangaluru, India</p><h1 id="name">Bilal<br />Muhazzin<span>.</span></h1><p className="hero-focus">SEO. Paid media. <em>Content.</em></p><p className="hero-description">I’m a Digital Marketing Specialist at Komquest Solutions, with experience in SEO, Google Ads, Meta Ads and social media management.</p><div className="hero-actions"><a className="button" href="#experience">View work experience <Arrow /></a><a className="text-link" href={`mailto:${email}`}>Email me <Arrow diagonal /></a></div></div>
         <div className="hero-foot"><span>Currently at Komquest Solutions</span><a href="#expertise">Scroll to explore <span aria-hidden="true">↓</span></a></div>
       </section>
