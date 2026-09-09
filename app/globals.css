@@ -32,3 +32,9 @@
 @keyframes glass-entrance{from{opacity:.4;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.reveal-once,.hero-image{animation:none!important}.role-details [data-slot=accordion-content]{transition:none!important}}
 @media print{.role-details [data-slot=accordion-content][hidden]{display:block!important;height:auto!important}.role-details [data-slot=accordion-content]{height:auto!important}.reading-progress{display:none}}
+/* Skills follow scroll position in both directions, rather than replaying a timer. */
+.expertise-list article.skill-scroll{position:relative;animation:none;opacity:calc(.35 + var(--skill-progress,1) * .65);transform:translateX(calc((1 - var(--skill-progress,1)) * 34px))}
+.expertise-list article.skill-scroll::after{content:'';position:absolute;top:-1px;left:0;width:100%;height:2px;background:#174af0;transform-origin:left;transform:scaleX(var(--skill-progress,1));pointer-events:none}
+@media(max-width:760px){.expertise-list article.skill-scroll{transform:translateY(calc((1 - var(--skill-progress,1)) * 24px))}}
+@media(prefers-reduced-motion:reduce){.expertise-list article.skill-scroll{opacity:1;transform:none}.expertise-list article.skill-scroll::after{transform:scaleX(1)}}
+@media print{.expertise-list article.skill-scroll{opacity:1;transform:none}.expertise-list article.skill-scroll::after{display:none}}
