@@ -8,3 +8,27 @@
 @media(max-width:760px){.header{height:76px}nav{gap:20px}.nav-contact{margin-left:4px}.nav-contact svg{display:none}.hero{min-height:690px}.hero-content{max-width:590px}h1{font-size:82px}.hero-description{max-width:350px}.expertise,.experience,.education{display:block}.section-heading{margin-bottom:40px}.experience>.section-heading{position:static}.section-intro{max-width:500px}.experience-note{margin-top:20px}.career-entry{padding-bottom:36px;margin-bottom:36px}.section{padding:65px 6%}.hero-foot>span{display:none}.hero-foot{justify-content:flex-end}.contact-details{display:grid;gap:23px}.contact-details a{justify-content:space-between}.contact-arrow{width:80px;height:80px}.contact-arrow svg{width:30px;height:30px}footer>span{display:none}}
 @media(max-width:520px){html{scroll-padding-top:92px}.header{height:72px}.wordmark{font-size:33px}nav{gap:16px;font-size:12px}nav>a:first-child{display:none}.hero{height:auto;min-height:790px;max-height:none;background:#f5f6f8}.hero-image{object-position:76% center;inset:auto 0 0;height:295px}.hero-content{padding-top:38px;padding-bottom:305px}.location{font-size:12px;margin-bottom:24px;max-width:250px;line-height:1.65}h1{font-size:clamp(62px,16.8vw,87px);margin-bottom:27px}.hero-focus{font-size:30px}.hero-description{font-size:16px;max-width:330px;margin-bottom:24px}.hero-actions{flex-wrap:wrap;gap:17px}.button{padding:15px 18px;font-size:13px;gap:16px}.text-link{font-size:13px;gap:7px}.hero-foot{border:0;padding:18px 0}.hero-foot a{padding:5px 10px;background:#ffffffd9}.eyebrow{margin-bottom:22px;font-size:11px}h2{font-size:40px}.expertise-list article{gap:18px}.expertise-list h3{font-size:21px}.career-meta{font-size:12px;gap:10px}.career-meta>span:last-child{font-size:10px}.career-title{gap:14px}.career-index{flex-basis:27px;height:27px;font-size:11px}.career-title h3{font-size:25px}.company{font-size:15px;line-height:1.5}.job-summary{font-size:16px}.responsibilities{padding-left:15px}.responsibilities li{padding-left:5px}.skill-line{font-size:11px;gap:10px 15px}.result{gap:19px;padding:20px 15px}.result strong{font-size:35px}.result span{font-size:13px}.result small{font-size:11px;line-height:1.5}.education-meta{font-size:12px;gap:16px}.education h3{font-size:24px}.contact-line{align-items:flex-end;gap:15px}.contact h2{font-size:clamp(34px,8.6vw,44px)}.contact-arrow{width:50px;height:50px}.contact-arrow svg{width:24px;height:24px}.contact-details{margin-top:35px}.contact-details a{font-size:14px;gap:10px}.contact-location{font-size:12px;line-height:1.7}footer{padding-top:25px;padding-bottom:25px}.footer-name{font-size:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+/* Small, accessible interactions keep the portfolio easy to scan. */
+.reading-progress{position:absolute;bottom:-1px;left:0;width:100%;height:2px;background:#174af0;transform:scaleX(0);transform-origin:left;pointer-events:none}
+.header nav a{position:relative;padding-top:10px;padding-bottom:10px}
+.header nav a::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.header nav a:hover::after,.header nav a[aria-current=location]::after{transform:scaleX(1)}
+.header nav a[aria-current=location]{color:#174af0}
+.role-details{border-top:1px solid #d1daea;margin-top:23px}
+.role-details-trigger{font-family:inherit;font-size:14px;line-height:1.5;color:#174af0;border-radius:0;padding:17px 0;cursor:pointer;align-items:center}
+.role-details-trigger:focus-visible{outline:2px solid #174af0;outline-offset:4px}
+.role-details [data-slot=accordion-content]{animation:none;transition:height .25s ease;height:var(--accordion-panel-height)}
+.role-details [data-slot=accordion-content][data-starting-style],.role-details [data-slot=accordion-content][data-ending-style]{height:0}
+.role-details [data-slot=accordion-content][hidden]{display:none}
+.role-details [data-slot=accordion-content]>div{height:auto;padding-bottom:12px}
+.role-details .responsibilities{padding-top:6px}
+.reveal-once{animation:section-reveal .65s cubic-bezier(.22,1,.36,1) both}
+.hero-image{animation:glass-entrance 1.1s ease-out both}
+.hero-actions .button svg{transition:transform .22s ease}
+.hero-actions .button:hover svg{transform:translateX(4px)}
+.contact-details a svg{transition:transform .22s ease}
+.contact-details a:hover svg{transform:translate(3px,-3px)}
+@keyframes section-reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glass-entrance{from{opacity:.4;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.reveal-once,.hero-image{animation:none!important}.role-details [data-slot=accordion-content]{transition:none!important}}
+@media print{.role-details [data-slot=accordion-content][hidden]{display:block!important;height:auto!important}.role-details [data-slot=accordion-content]{height:auto!important}.reading-progress{display:none}}
