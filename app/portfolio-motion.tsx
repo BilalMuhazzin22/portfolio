@@ -57,7 +57,7 @@ export function AvatarStage() {
     event.currentTarget.style.setProperty('--look-y', `${-((event.clientY - rect.top) / rect.height - .5) * 12}deg`);
   }} onPointerLeave={event => { event.currentTarget.style.setProperty('--look-x', '0deg'); event.currentTarget.style.setProperty('--look-y', '0deg'); }}>
     <span className="avatar-orbit" aria-hidden="true" />
-    <span className="avatar-float"><img src="/bilal-avatar.png" alt="A stylized 3D avatar of Bilal Muhazzin" width="768" height="768" fetchPriority="high" /></span>
+    <span className="avatar-float"><img src="/bilal-cartoon-avatar.png" alt="A cartoon 3D avatar of Bilal with curly hair, expressive eyes and a friendly smile" width="768" height="768" fetchPriority="high" /></span>
     <span className={`hello-bubble ${wave ? 'show' : ''}`} aria-live="polite">{wave ? 'Hey there! Let’s create something.' : ''}</span>
   </button><span className="avatar-caption">A little curiosity goes a long way. <span>Try saying hello ↗</span></span></div>;
 }
