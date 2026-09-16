@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 export function PortfolioMotion() {
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const hero = document.querySelector<HTMLElement>('.hero');
-    const avatar = document.querySelector<HTMLElement>('.avatar-track');
     const progress = document.querySelector<HTMLElement>('.reading-progress');
     const serviceRows = Array.from(document.querySelectorAll<HTMLElement>('.service-row'));
     const navigation = Array.from(document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]')).map(link => ({ link, section: document.querySelector<HTMLElement>(link.hash) }));
@@ -14,10 +12,6 @@ export function PortfolioMotion() {
       frame = 0;
       const h = document.documentElement.scrollHeight - innerHeight;
       if (progress) progress.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
-      if (hero && avatar) {
-        const p = Math.max(0, Math.min(1, scrollY / hero.offsetHeight));
-        avatar.style.setProperty('--travel', reduced.matches ? '0' : String(p));
-      }
       let active = '';
       navigation.forEach(({ link, section }) => { if (section && section.getBoundingClientRect().top <= 160) active = link.hash; });
       navigation.forEach(({ link }) => { if (link.hash === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
@@ -106,7 +100,7 @@ export function AvatarStage() {
   }
   return <div className="avatar-track"><button ref={stage} className="avatar-stage" aria-label="Say hello to Bilal’s character" onClick={greet}>
     <span className="avatar-orbit" aria-hidden="true" />
-    <span className="avatar-float"><span className="avatar-reaction" ref={reaction}><img src="/bilal-stylized-character.png" alt="Bilal’s stylized cartoon character with swept dark hair, relaxed eyes, a moustache and goatee" width="1280" height="1280" fetchPriority="high" draggable={false} /></span></span>
+    <span className="avatar-float"><span className="avatar-reaction" ref={reaction}><img src="/bilal-character-transparent.png" alt="Bilal’s stylized cartoon character with swept dark hair, relaxed eyes, a moustache and goatee" width="1280" height="1280" fetchPriority="high" draggable={false} /></span></span>
     <span className={`hello-bubble ${message ? 'show' : ''}`} aria-live="polite" aria-atomic="true">{message}</span>
   </button><span className="avatar-caption">A little curiosity goes a long way.<span className="pointer-hint">Move your cursor · Click to say hello</span><span className="touch-hint">Tap to say hello</span></span></div>;
 }

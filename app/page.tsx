@@ -19,12 +19,12 @@ export default function Home() {
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
     <a className="skip" href="#main">Skip to content</a>
-    <header className="header"><a className="wordmark" href="#main" aria-label="Bilal Muhazzin home">bm<span>✳</span></a><nav aria-label="Main navigation"><a href="#about">About</a><a href="#expertise">Skills</a><a href="#experience">Experience</a><a href="#contact">Let’s talk <Arrow diagonal /></a></nav><PortfolioMotion /></header>
+    <header className="header"><a className="wordmark" href="#main" aria-label="Bilal Muhazzin home">bm<span>✳</span></a><nav aria-label="Main navigation"><a href="#about">About</a><a href="#expertise">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact me <Arrow diagonal /></a></nav><PortfolioMotion /></header>
     <main id="main">
       <section className="hero" aria-labelledby="name">
         <div className="hero-topline"><span>Digital marketing specialist</span><span>Mangaluru, India <span className="tiny-star">✳</span></span></div>
         <h1 id="name">HI, I’M BILAL<span className="heading-dot">.</span></h1>
-        <div className="hero-bottom"><div className="hero-intro"><p>I turn search, social<br />& paid media into<br /><em>meaningful connections.</em></p><span className="micro">BILAL MUHAZZIN / PORTFOLIO</span></div><AvatarStage /><div className="hero-cta"><a className="button" href="#contact">Let’s talk <Arrow diagonal /></a><p>SEO · Paid media · Content</p></div></div>
+        <div className="hero-bottom"><div className="hero-intro"><p>I turn search, social<br />& paid media into<br /><em>meaningful connections.</em></p><span className="micro">BILAL MUHAZZIN / PORTFOLIO</span></div><AvatarStage /><div className="hero-cta"><a className="button" href="#contact">Contact me <Arrow diagonal /></a><p>SEO · Paid media · Content</p></div></div>
         <div className="hero-foot"><span><i />Currently at Komquest Solutions</span><a href="#about">Scroll to explore <span aria-hidden="true">↓</span></a></div>
       </section>
       <div className="discipline-strip" aria-hidden="true"><div>{[0,1].map(n => <span key={n}>SEARCH <b>✳</b> SOCIAL <b>✳</b> STRATEGY <b>✳</b> CONTENT <b>✳</b> </span>)}</div></div>
