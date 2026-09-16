@@ -41,7 +41,7 @@
 .hero-intro em{color:inherit}.hero-intro .micro,.hero-cta p{display:none}
 .hero-cta .button{font-size:clamp(11px,1.05vw,16px);padding:16px 32px;justify-content:center;gap:0;min-width:190px;background:linear-gradient(110deg,#090811 4%,#7623ad 40%,#e25ddb 75%,#f1b179 100%);border-color:#ba81ee}
 .hero-cta .button svg{display:none}
-.avatar-track{position:absolute;top:calc(var(--hero-title-size) * .64);left:50%;translate:-50% 0;width:var(--avatar-size);max-width:none;margin:0;transform:none}
+.avatar-track{position:absolute;top:calc(var(--hero-title-size) * .64);left:calc(50% - var(--avatar-size) / 2);width:var(--avatar-size);max-width:none;margin:0;transform:none}
 .avatar-stage{width:100%;aspect-ratio:1}
 .avatar-float img{mask-image:none;filter:none;clip-path:none}
 .avatar-orbit{display:none}
