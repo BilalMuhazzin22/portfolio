@@ -62,3 +62,18 @@
  .hero-intro,.hero-cta{top:calc(var(--hero-title-size) + clamp(110px,16svh,160px));transform:translateY(-50%)}
 }
 @media(prefers-reduced-motion:reduce){.avatar-track{transform:none!important}}
+
+/* Frosted audience cards, with a shared image behind the glass. */
+.audience-section{position:relative;overflow:hidden;isolation:isolate;background:#f6f6f5;color:#19191b;padding:90px 5% 88px;border-radius:30px;margin-top:24px}
+.audience-section h2{text-align:center;font-size:clamp(40px,5.2vw,80px);line-height:1.08;letter-spacing:-.055em;font-weight:500;margin:0 0 105px}
+.audience-stage{position:relative;max-width:1600px;margin:0 auto}
+.audience-backdrop{position:absolute;z-index:-1;inset:-130px -10% auto;width:120%;height:660px;object-fit:cover;object-position:center;filter:grayscale(1);opacity:.85;mask-image:radial-gradient(ellipse at center,#000 20%,transparent 70%);pointer-events:none}
+.audience-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.audience-card{display:flex;flex-direction:column;min-height:430px;padding:44px 30px 34px;border:1px solid #ffffff60;border-radius:14px;background:#d4d4d3a8;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:transform .3s ease,background .3s ease}
+.audience-icon{align-self:center;flex-shrink:0;color:#646168;margin:8px 0 84px}
+.audience-copy{margin-top:auto}.audience-card h3{font-size:clamp(25px,2.35vw,36px);line-height:1.15;letter-spacing:-.035em;font-weight:500;margin:0 0 22px;max-width:270px}
+.audience-card p{font-size:16px;line-height:1.55;letter-spacing:-.015em;margin:0;color:#37353c}
+@media(hover:hover){.audience-card:hover{transform:translateY(-7px);background:#e4ddeac9}}
+@media(max-width:1050px){.audience-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.audience-card{min-height:350px}.audience-icon{margin-bottom:55px}.audience-section h2{margin-bottom:70px}}
+@media(max-width:600px){.audience-section{padding:60px 6%;border-radius:22px;margin-top:16px}.audience-section h2{font-size:42px;margin-bottom:48px}.audience-grid{grid-template-columns:1fr;gap:16px}.audience-card{min-height:300px;padding:30px}.audience-icon{margin:0 0 45px}.audience-card h3{font-size:30px;margin-bottom:16px}.audience-backdrop{height:100%;inset:0 -10% auto}}
+@media(prefers-reduced-motion:reduce){.audience-card{transition:none}.audience-card:hover{transform:none}}
