@@ -77,3 +77,49 @@
 @media(max-width:1050px){.audience-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.audience-card{min-height:350px}.audience-icon{margin-bottom:55px}.audience-section h2{margin-bottom:70px}}
 @media(max-width:600px){.audience-section{padding:60px 6%;border-radius:22px;margin-top:16px}.audience-section h2{font-size:42px;margin-bottom:48px}.audience-grid{grid-template-columns:1fr;gap:16px}.audience-card{min-height:300px;padding:30px}.audience-icon{margin:0 0 45px}.audience-card h3{font-size:30px;margin-bottom:16px}.audience-backdrop{width:540px;height:700px;top:calc(50% - 350px);left:calc(50% - 270px)}}
 @media(prefers-reduced-motion:reduce){.audience-card{transition:none}.audience-card:hover{transform:none}}
+
+/* Keep content readable at every breakpoint and during scroll effects. */
+.header nav{font-size:14px}
+.header nav a{min-height:44px}
+.hero-intro p{font-size:clamp(14px,1.12vw,18px)}
+.hero-cta .button{font-size:14px;min-width:0;min-height:48px;padding:16px clamp(16px,2.2vw,32px);color:#fff;text-shadow:0 1px 3px #0009;background:linear-gradient(110deg,#140b20,#672397 48%,#944095)}
+.section-kicker,.career-meta,.skill-line,.education-meta,.footer-label,.footer-bottom{font-size:12px;line-height:1.6}
+.about-body p,.service-row p,.service-row .service-description,.responsibilities li,.education-list p,.contact-bottom p{font-size:16px}
+.text-link,.company,.career-top h3,.role-details-trigger,.copy-email,.footer-top>div{font-size:14px}
+.service-row{opacity:1}
+.service-arrow{display:none}
+.service-row{grid-template-columns:.22fr 1.1fr 1fr}
+.career-entry{position:relative;top:auto;box-shadow:none;margin-bottom:18px}
+.role-details-trigger{min-height:48px}
+.result small{font-size:12px;line-height:1.5}
+.result>span{font-size:16px}
+.audience-copy{margin-top:0}
+.audience-card h3{min-height:3.45em}
+.audience-icon{margin-bottom:52px}
+.footer-top a:not(.footer-name):not(.back-top){min-height:36px;display:inline-flex;align-items:center}
+.contact-bottom>div{min-width:0}
+.copy-email{flex-shrink:0}
+.skip{transform:translateY(-200%);top:10px}
+.skip:focus{transform:none}
+.skip:not(:focus){clip-path:inset(50%)}
+.outline-title{-webkit-text-stroke:1.25px #aaa8ad}
+@media(max-width:1050px){.audience-card h3{min-height:2.3em}.audience-icon{margin-bottom:40px}}
+@media(max-width:700px){
+ .header nav{font-size:12px;letter-spacing:0}
+ .header nav a{padding:18px 0}
+ .hero-intro{width:55%}.hero-intro p{font-size:14px;line-height:1.6}
+ .hero-cta{width:40%;margin-top:20px}.hero-cta .button{font-size:12px;padding:14px 16px;min-height:44px}
+ .section-kicker{flex-wrap:wrap;gap:8px 16px}.section-kicker span:last-child{text-align:left}
+ .service-row{grid-template-columns:30px minmax(0,1fr);gap:18px}
+ .service-row .service-description{grid-column:2;grid-row:2}
+ .career-top{grid-template-columns:28px minmax(0,1fr);gap:12px}
+ .career-meta{gap:6px 12px}.skill-line{gap:8px 14px}
+ .education-meta{flex-wrap:wrap;gap:6px 16px}
+ .contact h2 span{display:none}
+ .footer-top{grid-template-columns:1fr 1fr;gap:30px 20px}
+ .footer-name{grid-column:1 / -1}
+ .footer-top>div:nth-child(3){grid-column:1 / -1;grid-row:auto;padding:0;margin:0}
+ .back-top{grid-column:2;grid-row:2}
+ .footer-bottom{flex-wrap:wrap;gap:8px}.footer-bottom span:last-child{text-align:left}
+}
+@media(max-width:600px){.audience-card h3{min-height:0}.audience-icon{margin-bottom:40px}}

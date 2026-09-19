@@ -100,15 +100,19 @@ export function AvatarStage() {
   }
   return <div className="avatar-track"><button ref={stage} className="avatar-stage" aria-label="Say hello to Bilal’s character" onClick={greet}>
     <span className="avatar-orbit" aria-hidden="true" />
-    <span className="avatar-float"><span className="avatar-reaction" ref={reaction}><img src="/bilal-character-transparent.png" alt="Bilal’s stylized cartoon character with swept dark hair, relaxed eyes, a moustache and goatee" width="1280" height="1280" fetchPriority="high" draggable={false} /></span></span>
+    <span className="avatar-float"><span className="avatar-reaction" ref={reaction}><img src="/bilal-character-transparent.webp" alt="Bilal’s stylized cartoon character with swept dark hair, relaxed eyes, a moustache and goatee" width="1280" height="1280" fetchPriority="high" decoding="async" draggable={false} /></span></span>
     <span className={`hello-bubble ${message ? 'show' : ''}`} aria-live="polite" aria-atomic="true">{message}</span>
   </button><span className="avatar-caption">A little curiosity goes a long way.<span className="pointer-hint">Move your cursor · Click to say hello</span><span className="touch-hint">Tap to say hello</span></span></div>;
 }
 
 export function CopyEmail({ email }: { email: string }) {
   const [status, setStatus] = useState('Copy email');
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { if (resetTimer.current) clearTimeout(resetTimer.current); }, []);
   return <button className="copy-email" onClick={async () => {
+    if (resetTimer.current) clearTimeout(resetTimer.current);
     try { await navigator.clipboard.writeText(email); setStatus('Copied!'); }
     catch { setStatus('Select the email address to copy'); }
+    resetTimer.current = setTimeout(() => setStatus('Copy email'), 4000);
   }}><span aria-live="polite">{status}</span><span aria-hidden="true">↗</span></button>;
 }
