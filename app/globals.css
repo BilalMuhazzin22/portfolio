@@ -59,7 +59,7 @@
  .hero-intro,.hero-cta{top:calc(var(--hero-title-size) + 22px)}.hero-intro p{font-size:10px}.hero-cta .button{font-size:10px;min-width:140px;padding:12px 20px}
 }
 @media(min-width:701px) and (min-height:551px){
- .hero-intro,.hero-cta{top:calc(var(--hero-title-size) + clamp(110px,16svh,160px));transform:translateY(-50%)}
+ .hero-intro,.hero-cta{top:calc(var(--hero-title-size) + clamp(110px,16svh,160px) + clamp(28px,4svh,48px));transform:translateY(-50%)}
 }
 @media(prefers-reduced-motion:reduce){.avatar-track{transform:none!important}}
 
@@ -123,3 +123,16 @@
  .footer-bottom{flex-wrap:wrap;gap:8px}.footer-bottom span:last-child{text-align:left}
 }
 @media(max-width:600px){.audience-card h3{min-height:0}.audience-icon{margin-bottom:40px}}
+
+/* Cards collect into a layered deck while scrolling down the experience list. */
+@media(min-width:701px) and (prefers-reduced-motion:no-preference){
+ .career-list[data-stack=true]{isolation:isolate}
+ .career-list[data-stack=true]::after{content:'';display:block;height:var(--stack-tail,400px)}
+ .career-list[data-stack=true] .career-entry{position:sticky;top:24px;box-shadow:0 -12px 32px #0004}
+ .career-list[data-stack=true] .career-1{top:44px}
+ .career-list[data-stack=true] .career-2{top:64px}
+ .career-list[data-stack=true] .career-3{top:84px}
+ .career-list[data-stack=true] .career-4{top:104px}
+ .career-list[data-stack=true]:has([aria-expanded=true])::after,.career-list[data-stack=true]:has(:focus-visible)::after{height:0}
+ .career-list[data-stack=true]:has([aria-expanded=true]) .career-entry,.career-list[data-stack=true]:has(:focus-visible) .career-entry{position:relative;top:auto;box-shadow:none}
+}

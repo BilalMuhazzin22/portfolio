@@ -6,6 +6,21 @@ export function PortfolioMotion() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const progress = document.querySelector<HTMLElement>('.reading-progress');
     const serviceRows = Array.from(document.querySelectorAll<HTMLElement>('.service-row'));
+    const careerList = document.querySelector<HTMLElement>('.career-list');
+    const careerCards = Array.from(document.querySelectorAll<HTMLElement>('.career-entry'));
+    // Stack only when every card fits; expanded details remain fully scrollable.
+    const sizeCareerStack = () => {
+      const tallest = Math.max(0, ...careerCards.map(card => card.offsetHeight));
+      if (careerList) {
+        careerList.dataset.stack = String(!reduced.matches && innerWidth > 700 && tallest + 160 < innerHeight);
+        careerList.style.setProperty('--stack-tail', `${Math.max(100, tallest - (careerCards.at(-1)?.offsetHeight ?? 0) + 128)}px`);
+      }
+    };
+    const careerResize = new ResizeObserver(sizeCareerStack);
+    careerCards.forEach(card => careerResize.observe(card));
+    window.addEventListener('resize', sizeCareerStack);
+    reduced.addEventListener('change', sizeCareerStack);
+    sizeCareerStack();
     const navigation = Array.from(document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]')).map(link => ({ link, section: document.querySelector<HTMLElement>(link.hash) }));
     let frame = 0;
     const update = () => {
@@ -29,7 +44,7 @@ export function PortfolioMotion() {
     }), { threshold: .1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     update();
-    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); reduced.removeEventListener('change', schedule); observer.disconnect(); };
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); reduced.removeEventListener('change', schedule); observer.disconnect(); careerResize.disconnect(); window.removeEventListener('resize', sizeCareerStack); reduced.removeEventListener('change', sizeCareerStack); };
   }, []);
   return <span className="reading-progress" aria-hidden="true" />;
 }
