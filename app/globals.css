@@ -58,4 +58,7 @@
  .hero{height:calc(100svh - 48px);--hero-title-size:min(13.4vw,25svh);--avatar-size:min(48vw,calc(100svh - 95px))}
  .hero-intro,.hero-cta{top:calc(var(--hero-title-size) + 22px)}.hero-intro p{font-size:10px}.hero-cta .button{font-size:10px;min-width:140px;padding:12px 20px}
 }
+@media(min-width:701px) and (min-height:551px){
+ .hero-intro,.hero-cta{top:calc(var(--hero-title-size) + clamp(110px,16svh,160px));transform:translateY(-50%)}
+}
 @media(prefers-reduced-motion:reduce){.avatar-track{transform:none!important}}
