@@ -11,7 +11,7 @@ export function AudienceSection() {
   return <section className="audience-section" id="who-i-help" aria-labelledby="audience-title">
     <h2 id="audience-title">Who I can help</h2>
     <div className="audience-stage">
-      <img className="audience-backdrop" src="/optical-prism-hero.png" alt="" aria-hidden="true" loading="lazy" width="1536" height="1024" />
+      <img className="audience-backdrop" src="/chrome-emblem.png" alt="" aria-hidden="true" loading="lazy" width="1280" height="1280" />
       <div className="audience-grid">
         {audiences.map(({ title, description, Icon }) => <article className="audience-card" key={title}>
           <Icon className="audience-icon" size={42} strokeWidth={1.35} aria-hidden="true" />
