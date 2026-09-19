@@ -127,12 +127,12 @@
 /* Cards collect into a layered deck while scrolling down the experience list. */
 @media(min-width:701px) and (prefers-reduced-motion:no-preference){
  .career-list[data-stack=true]{isolation:isolate}
- .career-list[data-stack=true]::after{content:'';display:block;height:var(--stack-tail,400px)}
- .career-list[data-stack=true] .career-entry{position:sticky;top:24px;box-shadow:0 -12px 32px #0004}
+ .career-list[data-stack=true]::after{content:'';display:block;height:128px}
+ .career-list[data-stack=true] .career-entry{position:sticky;top:24px;min-height:var(--stack-height,0px);box-shadow:0 -12px 32px #0004}
  .career-list[data-stack=true] .career-1{top:44px}
  .career-list[data-stack=true] .career-2{top:64px}
  .career-list[data-stack=true] .career-3{top:84px}
  .career-list[data-stack=true] .career-4{top:104px}
  .career-list[data-stack=true]:has([aria-expanded=true])::after,.career-list[data-stack=true]:has(:focus-visible)::after{height:0}
- .career-list[data-stack=true]:has([aria-expanded=true]) .career-entry,.career-list[data-stack=true]:has(:focus-visible) .career-entry{position:relative;top:auto;box-shadow:none}
+ .career-list[data-stack=true]:has([aria-expanded=true]) .career-entry,.career-list[data-stack=true]:has(:focus-visible) .career-entry{position:relative;top:auto;min-height:0;box-shadow:none}
 }

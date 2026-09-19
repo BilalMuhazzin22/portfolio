@@ -10,10 +10,11 @@ export function PortfolioMotion() {
     const careerCards = Array.from(document.querySelectorAll<HTMLElement>('.career-entry'));
     // Stack only when every card fits; expanded details remain fully scrollable.
     const sizeCareerStack = () => {
+      careerList?.style.removeProperty('--stack-height');
       const tallest = Math.max(0, ...careerCards.map(card => card.offsetHeight));
       if (careerList) {
         careerList.dataset.stack = String(!reduced.matches && innerWidth > 700 && tallest + 160 < innerHeight);
-        careerList.style.setProperty('--stack-tail', `${Math.max(100, tallest - (careerCards.at(-1)?.offsetHeight ?? 0) + 128)}px`);
+        careerList.style.setProperty('--stack-height', `${tallest}px`);
       }
     };
     const careerResize = new ResizeObserver(sizeCareerStack);
