@@ -1,49 +1,40 @@
-import { Mail, UsersRound } from 'lucide-react';
+import { ToolMarquee } from './tool-marquee';
 
-const toolGroups = [
-  { title: 'Advertising & Analytics', detail: 'Launch. Measure. Improve.', tools: [
-    { name: 'Google Ads', logos: ['google-ads.svg'] },
-    { name: 'Meta Ads Manager', logos: ['meta.svg'] },
-    { name: 'Google Analytics', logos: ['google-analytics.svg'] },
-    { name: 'Google Search Console', logos: ['search-console.svg'] },
-  ] },
-  { title: 'SEO & Research', detail: 'Find the next opportunity.', tools: [
-    { name: 'SEMrush', logos: ['semrush.svg'] },
-    { name: 'Ubersuggest', logos: ['ubersuggest.svg'] },
-    { name: 'Google Business Profile', logos: ['google-business.svg'] },
-  ] },
-  { title: 'Design & Content', detail: 'Turn ideas into content.', tools: [
-    { name: 'Canva', logos: ['canva.svg'] },
-    { name: 'Adobe Express', logos: ['adobe-express.png'] },
-    { name: 'ChatGPT', logos: ['chatgpt.svg'] },
-    { name: 'WordPress / Blogger', logos: ['wordpress.svg', 'blogger.svg'] },
-  ] },
-  { title: 'Communication & CRM', detail: 'Keep the conversation going.', tools: [
-    { name: 'WhatsApp Business', logos: ['whatsapp-business.png'] },
-    { name: 'CRM tools', Icon: UsersRound },
-    { name: 'Email marketing', Icon: Mail },
-  ] },
+const tools = {
+  googleads: 'Google Ads', meta: 'Meta Ads', googleanalytics: 'Google Analytics',
+  googlesearchconsole: 'Search Console', semrush: 'SEMrush', ubersuggest: 'Ubersuggest',
+  googlemybusiness: 'Business Profile', canva: 'Canva', adobeexpress: 'Adobe Express',
+  openai: 'ChatGPT', wordpress: 'WordPress', blogger: 'Blogger',
+};
+type ToolId = keyof typeof tools;
+const workflow: { title: string; description: string; tools: ToolId[] }[] = [
+  { title: 'Research', description: 'Keywords, competitors & content gaps — mapped before a single rupee is spent.', tools: ['semrush', 'ubersuggest'] },
+  { title: 'Create', description: 'SEO-ready websites, content & ad creatives built to convert.', tools: ['wordpress', 'blogger', 'canva', 'adobeexpress', 'openai'] },
+  { title: 'Launch', description: 'Campaigns live across search, social & local — targeted, tracked, controlled.', tools: ['googleads', 'meta', 'googlemybusiness'] },
+  { title: 'Measure & Optimize', description: "Rankings, traffic & conversions tracked end-to-end. Scale what works, kill what doesn't.", tools: ['googleanalytics', 'googlesearchconsole'] },
 ];
 
 export function ToolsSection() {
   return <section className="tools-section section" id="tools" aria-labelledby="tools-title">
-    <div className="tools-heading">
-      <div><p className="tools-eyebrow">MY WORKING TOOLKIT</p><h2 id="tools-title">Tools &<br /><em>Tech Stack.</em></h2></div>
-      <p className="tools-intro">The platforms behind{' '}<br />the strategy, creative{' '}<br />and campaign work.</p>
-    </div>
-    <div className="tools-groups">
-      {toolGroups.map(({ title, detail, tools }, index) => <div className="tools-group" key={title}>
-        <div className="tools-category"><span className="tools-number" aria-hidden="true">0{index + 1}</span><div><h3>{title}</h3><p>{detail}</p></div></div>
-        <ul className={`tools-grid tools-grid-${tools.length}`}>
-          {tools.map(tool => <li className="tool-item" key={tool.name}>
-            <span className={`tool-logo${'logos' in tool && (tool.logos?.length ?? 0) > 1 ? ' tool-logo-pair' : ''}${'Icon' in tool ? ' tool-logo-generic' : ''}`}>
-              {tool.logos ? tool.logos.map(logo => <img key={logo} src={`/tool-logos/${logo}`} alt="" width="52" height="52" loading="lazy" decoding="async" />) : <tool.Icon size={34} strokeWidth={1.5} aria-hidden="true" />}
-            </span>
-            <span className="tool-name">{tool.name}</span>
-          </li>)}
+    <header className="toolkit-heading">
+      <p className="toolkit-eyebrow">MY TOOLKIT</p>
+      <h2 id="tools-title">Tools, mapped to<br /><span>how I work.</span></h2>
+      <p className="toolkit-intro">Every tool below earns its place in a stage of my process — from research to revenue.</p>
+    </header>
+    <ToolMarquee tools={Object.entries(tools).map(([id, name]) => ({ id, name }))} />
+    <div className="workflow-grid">
+      {workflow.map((stage, index) => <article className="workflow-card" key={stage.title}>
+        <span className="workflow-number" aria-hidden="true">0{index + 1}</span>
+        <h3>{stage.title}</h3>
+        <p>{stage.description}</p>
+        <ul className="workflow-tools" aria-label={`${stage.title} tools`}>
+          {stage.tools.map(id => <li key={id}><img src={`/tool-logos/mono/${id}.svg`} width="18" height="18" alt="" loading="lazy" /><span>{tools[id]}</span></li>)}
         </ul>
-      </div>)}
+      </article>)}
+    </div>
+    <div className="toolkit-result">
+      <strong>₹27.91</strong>
+      <p>Cost per WhatsApp lead — recent result from an individual OnePlanet360 campaign.</p>
     </div>
   </section>;
 }
-
