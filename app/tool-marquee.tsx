@@ -2,13 +2,13 @@
 import { useState } from 'react';
 import { Pause, Play } from 'lucide-react';
 
-export function ToolMarquee({ tools }: { tools: { id: string; name: string }[] }) {
+export function ToolMarquee({ tools }: { tools: { id: string; name: string; logo: string }[] }) {
   const [paused, setPaused] = useState(false);
   return <div className="toolkit-marquee" data-paused={paused}>
     <div className="toolkit-marquee-window">
       <div className="toolkit-marquee-track">
         {[0, 1].map(copy => <ul className="toolkit-marquee-group" key={copy} aria-label={copy === 0 ? 'Marketing toolkit' : undefined} aria-hidden={copy === 1 ? true : undefined}>
-          {tools.map(tool => <li key={tool.id}><img src={`/tool-logos/mono/${tool.id}.svg`} alt="" width="24" height="24" /><span>{tool.name}</span></li>)}
+          {tools.map(tool => <li key={tool.id} data-tool={tool.id}><img src={`/tool-logos/${tool.logo}`} alt="" width="34" height="34" /><span>{tool.name}</span></li>)}
         </ul>)}
       </div>
     </div>

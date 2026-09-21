@@ -63,38 +63,24 @@
 }
 @media(prefers-reduced-motion:reduce){.avatar-track{transform:none!important}}
 
-/* A single toolkit section: process, platforms, and one campaign result. */
-.tools-section{background:#0b0b0d;padding-top:88px;padding-bottom:88px}
-.toolkit-heading{max-width:850px}
-.toolkit-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;color:#c49cf5;margin:0 0 22px}
-.toolkit-heading h2{font-size:clamp(40px,4.7vw,72px);font-weight:650;line-height:1.06;letter-spacing:-.055em;margin:0}
-.toolkit-heading h2 span{color:#bda1e3}
-.toolkit-intro{max-width:620px;font-size:17px;line-height:1.7;color:#b4b0bb;margin:24px 0 0}
-.toolkit-marquee{display:flex;align-items:center;gap:14px;margin:38px 0 36px;border-block:1px solid #302d35;padding:19px 0}
+/* A quiet toolkit introduction and one continuous strip of original brand marks. */
+.tools-section{background:#0b0b0d;padding-top:64px;padding-bottom:64px}
+.toolkit-heading{display:flex;align-items:baseline;justify-content:space-between;gap:24px}
+.toolkit-heading h2{font-size:32px;font-weight:550;line-height:1.2;letter-spacing:-.04em;margin:0;color:#f3f1ed}
+.toolkit-heading p{font-size:15px;line-height:1.6;color:#aaa6b1;margin:0}
+.toolkit-marquee{display:flex;align-items:center;gap:16px;margin-top:28px;border-block:1px solid #2a272e;padding:22px 0}
 .toolkit-marquee-window{flex:1;min-width:0;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
 .toolkit-marquee-track{display:flex;width:max-content;animation:toolkit-scroll 48s linear infinite}
-.toolkit-marquee-group{display:flex;flex-shrink:0;align-items:center;gap:38px;list-style:none;padding:0 38px 0 0;margin:0}
-.toolkit-marquee-group li{display:flex;align-items:center;gap:11px;white-space:nowrap;color:#eeebf2;font-size:14px;font-weight:500}
-.toolkit-marquee-group img{width:24px;height:24px;object-fit:contain}
+.toolkit-marquee-group{display:flex;flex-shrink:0;align-items:center;gap:48px;list-style:none;padding:0 48px 0 0;margin:0}
+.toolkit-marquee-group li{display:flex;align-items:center;gap:12px;white-space:nowrap;color:#ddd9e2;font-size:15px;font-weight:500}
+.toolkit-marquee-group img{width:34px;height:34px;object-fit:contain;flex-shrink:0}
+.toolkit-marquee-group [data-tool=openai] img,.toolkit-marquee-group [data-tool=wordpress] img{filter:brightness(0) invert(1)}
 .toolkit-marquee:hover .toolkit-marquee-track,.toolkit-marquee:focus-within .toolkit-marquee-track,.toolkit-marquee[data-paused=true] .toolkit-marquee-track{animation-play-state:paused}
-.toolkit-marquee-toggle{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border:1px solid #39333f;border-radius:50%;background:transparent;color:#cfc6db;cursor:pointer;transition:background .2s ease}
-.toolkit-marquee-toggle:hover{background:#261e31}
-.workflow-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.workflow-card{min-width:0;display:flex;flex-direction:column;align-items:flex-start;padding:28px 24px;border:1px solid #302c37;border-radius:18px;background:#131215;transition:border-color .25s ease,transform .25s ease}
-.workflow-number{font-size:38px;line-height:1;letter-spacing:-.06em;font-weight:600;color:#65606c;margin-bottom:28px}
-.workflow-card h3{font-size:25px;line-height:1.2;letter-spacing:-.035em;font-weight:650;margin:0 0 16px}
-.workflow-card>p{font-size:15px;line-height:1.75;color:#b3afba;margin:0 0 28px}
-.workflow-tools{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:auto 0 0}
-.workflow-tools li{display:flex;align-items:center;gap:8px;padding:8px 11px;max-width:100%;border:1px solid #3a3343;border-radius:100px;background:#201c26;color:#e8e2ed;font-size:12px;line-height:1.4}
-.workflow-tools img{width:18px;height:18px;object-fit:contain;flex-shrink:0}
-.toolkit-result{display:flex;align-items:center;gap:clamp(24px,5vw,76px);margin-top:24px;padding:30px 36px;border:1px solid #3b2b4d;border-radius:18px;background:linear-gradient(110deg,#21152e,#121014 80%)}
-.toolkit-result strong{font-size:clamp(48px,5vw,78px);font-weight:700;line-height:1.05;letter-spacing:-.06em;flex-shrink:0;color:#d1aeff;background:linear-gradient(100deg,#b78bff,#e3b3ff 70%,#f6cbba);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.toolkit-result p{max-width:460px;font-size:17px;line-height:1.65;color:#c2b9cc;margin:0}
+.toolkit-marquee-toggle{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border:1px solid #343039;border-radius:50%;background:transparent;color:#bfb8c8;cursor:pointer;transition:background .2s ease}
+.toolkit-marquee-toggle:hover{background:#211b29}
 @keyframes toolkit-scroll{to{transform:translateX(-50%)}}
-@media(hover:hover){.workflow-card:hover{transform:translateY(-4px);border-color:#70508c}}
-@media(max-width:1150px){.workflow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workflow-card{padding:28px}.workflow-card h3{font-size:27px}.workflow-card>p{max-width:420px}.workflow-tools li{font-size:13px}.workflow-number{margin-bottom:24px}}
-@media(max-width:700px){.tools-section{padding-top:58px;padding-bottom:58px}.toolkit-intro{font-size:16px;margin-top:20px}.toolkit-marquee{margin:28px 0;padding:14px 0;gap:8px}.toolkit-marquee-group{gap:26px;padding-right:26px}.workflow-grid{grid-template-columns:1fr;gap:14px}.workflow-card{padding:25px}.workflow-number{font-size:32px;margin-bottom:20px}.workflow-card h3{font-size:26px;margin-bottom:14px}.workflow-card>p{margin-bottom:24px}.toolkit-result{flex-direction:column;align-items:flex-start;gap:18px;padding:26px}.toolkit-result p{font-size:16px}}
-@media(prefers-reduced-motion:reduce){.toolkit-marquee-track{animation:none;transform:none}.toolkit-marquee-window{overflow-x:auto;mask-image:none;padding-bottom:8px}.toolkit-marquee-group[aria-hidden=true],.toolkit-marquee-toggle{display:none}.toolkit-marquee-group{gap:24px;padding-right:0}.workflow-card{transition:none}.workflow-card:hover{transform:none}}
+@media(max-width:700px){.tools-section{padding-top:42px;padding-bottom:42px}.toolkit-heading{display:block}.toolkit-heading h2{font-size:28px}.toolkit-heading p{font-size:14px;margin-top:10px;max-width:310px}.toolkit-marquee{margin-top:22px;padding:18px 0;gap:8px}.toolkit-marquee-group{gap:30px;padding-right:30px}.toolkit-marquee-group li{font-size:14px;gap:10px}.toolkit-marquee-group img{width:30px;height:30px}}
+@media(prefers-reduced-motion:reduce){.toolkit-marquee-track{animation:none;transform:none}.toolkit-marquee-window{overflow-x:auto;mask-image:none;padding-bottom:8px}.toolkit-marquee-group[aria-hidden=true],.toolkit-marquee-toggle{display:none}.toolkit-marquee-group{gap:24px;padding-right:0}}
 
 /* Frosted audience cards, with a shared image behind the glass. */
 .audience-section{position:relative;overflow:hidden;isolation:isolate;background:#f6f6f5;color:#19191b;padding:64px 5% 64px;border-radius:30px;margin-top:24px}
