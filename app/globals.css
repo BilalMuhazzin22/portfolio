@@ -68,19 +68,16 @@
 .toolkit-heading{display:flex;align-items:baseline;justify-content:space-between;gap:24px}
 .toolkit-heading h2{font-size:32px;font-weight:550;line-height:1.2;letter-spacing:-.04em;margin:0;color:#f3f1ed}
 .toolkit-heading p{font-size:15px;line-height:1.6;color:#aaa6b1;margin:0}
-.toolkit-marquee{display:flex;align-items:center;gap:16px;margin-top:28px;border-block:1px solid #2a272e;padding:22px 0}
-.toolkit-marquee-window{flex:1;min-width:0;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.toolkit-marquee{display:flex;align-items:center;margin-top:28px;border-block:1px solid #2a272e;padding:24px 0}
+.toolkit-marquee-window{flex:1;min-width:0;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
 .toolkit-marquee-track{display:flex;width:max-content;animation:toolkit-scroll 48s linear infinite}
-.toolkit-marquee-group{display:flex;flex-shrink:0;align-items:center;gap:48px;list-style:none;padding:0 48px 0 0;margin:0}
-.toolkit-marquee-group li{display:flex;align-items:center;gap:12px;white-space:nowrap;color:#ddd9e2;font-size:15px;font-weight:500}
-.toolkit-marquee-group img{width:34px;height:34px;object-fit:contain;flex-shrink:0}
-.toolkit-marquee-group [data-tool=openai] img,.toolkit-marquee-group [data-tool=wordpress] img{filter:brightness(0) invert(1)}
-.toolkit-marquee:hover .toolkit-marquee-track,.toolkit-marquee:focus-within .toolkit-marquee-track,.toolkit-marquee[data-paused=true] .toolkit-marquee-track{animation-play-state:paused}
-.toolkit-marquee-toggle{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border:1px solid #343039;border-radius:50%;background:transparent;color:#bfb8c8;cursor:pointer;transition:background .2s ease}
-.toolkit-marquee-toggle:hover{background:#211b29}
+.toolkit-marquee-group{display:flex;flex-shrink:0;align-items:center;gap:56px;list-style:none;padding:0 56px 0 0;margin:0}
+.toolkit-marquee-group li{display:flex;align-items:center;gap:15px;white-space:nowrap;color:#f0edf2;font-size:16px;font-weight:500}
+.toolkit-marquee-group img{width:48px;height:48px;object-fit:contain;flex-shrink:0}
+.toolkit-marquee-group img.toolkit-logo-contrast{filter:brightness(0) invert(1)}
 @keyframes toolkit-scroll{to{transform:translateX(-50%)}}
-@media(max-width:700px){.tools-section{padding-top:42px;padding-bottom:42px}.toolkit-heading{display:block}.toolkit-heading h2{font-size:28px}.toolkit-heading p{font-size:14px;margin-top:10px;max-width:310px}.toolkit-marquee{margin-top:22px;padding:18px 0;gap:8px}.toolkit-marquee-group{gap:30px;padding-right:30px}.toolkit-marquee-group li{font-size:14px;gap:10px}.toolkit-marquee-group img{width:30px;height:30px}}
-@media(prefers-reduced-motion:reduce){.toolkit-marquee-track{animation:none;transform:none}.toolkit-marquee-window{overflow-x:auto;mask-image:none;padding-bottom:8px}.toolkit-marquee-group[aria-hidden=true],.toolkit-marquee-toggle{display:none}.toolkit-marquee-group{gap:24px;padding-right:0}}
+@media(max-width:700px){.tools-section{padding-top:42px;padding-bottom:42px}.toolkit-heading{display:block}.toolkit-heading h2{font-size:28px}.toolkit-heading p{font-size:14px;margin-top:10px;max-width:310px}.toolkit-marquee{margin-top:22px;padding:20px 0}.toolkit-marquee-group{gap:36px;padding-right:36px}.toolkit-marquee-group li{font-size:15px;gap:12px}.toolkit-marquee-group img{width:40px;height:40px}}
+@media(prefers-reduced-motion:reduce){.toolkit-marquee-track{animation:none;transform:none}.toolkit-marquee-window{overflow-x:auto;mask-image:none;padding-bottom:8px}.toolkit-marquee-group[aria-hidden=true]{display:none}.toolkit-marquee-group{gap:24px;padding-right:0}}
 
 /* Frosted audience cards, with a shared image behind the glass. */
 .audience-section{position:relative;overflow:hidden;isolation:isolate;background:#f6f6f5;color:#19191b;padding:64px 5% 64px;border-radius:30px;margin-top:24px}
