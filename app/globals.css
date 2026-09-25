@@ -71,12 +71,12 @@
 
 /* Frosted tool tiles catch the purple light beneath them. */
 .tools-section{position:relative;isolation:isolate;background:#0b0b0d;padding-top:72px;padding-bottom:80px}
-.tools-section::before{content:'';position:absolute;inset:130px 0 12px;z-index:-1;pointer-events:none;background:linear-gradient(150deg,transparent 22%,#512b8933 34%,#c899ff85 41%,#7d47c145 47%,transparent 57%),linear-gradient(32deg,transparent 26%,#9c61de55 40%,#ddbfff5c 44%,#723fbc30 52%,transparent 64%),radial-gradient(ellipse at 65% 55%,#7c45bb55,transparent 66%);filter:blur(22px);mask-image:radial-gradient(ellipse 60% 70% at 50% 50%,#000 28%,transparent 85%)}
 .toolkit-heading{display:flex;align-items:center;justify-content:space-between;gap:28px}
 .toolkit-heading h2{display:flex;align-items:center;gap:20px;font-family:Anton,Impact,sans-serif;font-size:clamp(34px,3.5vw,48px);font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:0;color:#f3f1ed}
 .toolkit-heading h2 span{font-family:Arial,Helvetica,sans-serif;font-size:.7em;font-weight:400;color:#b88aed}
 .toolkit-heading p{font-size:16px;line-height:1.6;color:#aaa6b1;max-width:330px;margin:0}
-.toolkit-categories{display:grid;gap:34px;margin-top:44px}
+.toolkit-categories{position:relative;isolation:isolate;display:grid;gap:34px;margin-top:44px}
+.toolkit-categories::before{content:'';position:absolute;inset:-48px -4% -48px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,#a064ef4d 0%,#8747d63d 28%,#6832aa24 48%,#4522700d 64%,transparent 78%);filter:blur(24px)}
 .toolkit-category h3{display:flex;flex-direction:column;align-items:center;gap:10px;margin:0 0 18px;color:#d9d1e3;font-size:14px;font-weight:600;letter-spacing:.12em;line-height:1.4;text-transform:uppercase;text-align:center}
 .toolkit-category h3::after{content:'';width:24px;height:2px;border-radius:2px;background:#ad72ff}
 .toolkit-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;list-style:none;padding:0;margin:0 auto;max-width:1136px}
