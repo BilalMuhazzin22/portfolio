@@ -1,5 +1,6 @@
 export const linkedin = 'https://www.linkedin.com/in/bilal-muhazzin22/';
-export const siteUrl = 'https://bilal-muhazzin.bilalmuhazzin0.chatgpt.site';
+// Set NEXT_PUBLIC_SITE_URL at build time to publish the same site under another address (e.g. GitHub Pages).
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bilal-muhazzin.bilalmuhazzin0.chatgpt.site';
 export const email = 'bilalmuhazzin650@gmail.com';
 export const experiences = [
   {
