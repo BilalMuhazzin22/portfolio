@@ -6,6 +6,7 @@ export function PortfolioMotion() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const progress = document.querySelector<HTMLElement>('.reading-progress');
     const serviceRows = Array.from(document.querySelectorAll<HTMLElement>('.service-row'));
+    const timelineItems = Array.from(document.querySelectorAll<HTMLElement>('.education-list article'));
     const careerList = document.querySelector<HTMLElement>('.career-list');
     const careerCards = Array.from(document.querySelectorAll<HTMLElement>('.career-entry'));
     // Let tall cards scroll into view before pinning, including short desktop windows.
@@ -36,6 +37,15 @@ export function PortfolioMotion() {
         const p = Math.max(0, Math.min(1, (innerHeight * .92 - row.getBoundingClientRect().top) / (innerHeight * .45)));
         row.style.setProperty('--reveal', reduced.matches ? '1' : String(p));
       });
+      // Draw each timeline segment down as it passes the upper part of the screen, then light the next dot.
+      timelineItems.forEach((item, i) => {
+        const next = timelineItems[i + 1];
+        if (!next) return;
+        const rect = item.getBoundingClientRect();
+        const p = reduced.matches ? 1 : Math.max(0, Math.min(1, (innerHeight * .62 - rect.top - 40) / rect.height));
+        item.style.setProperty('--draw', String(p));
+        next.classList.toggle('is-reached', p > .97);
+      });
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     window.addEventListener('scroll', schedule, { passive: true });
@@ -45,6 +55,8 @@ export function PortfolioMotion() {
       if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
     }), { threshold: .1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Tool tiles stay visible without JS; only hide them for the pop-in once the observer is watching.
+    document.querySelectorAll<HTMLElement>('.toolkit-categories').forEach(el => { el.dataset.animate = ''; observer.observe(el); });
     update();
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); reduced.removeEventListener('change', schedule); observer.disconnect(); careerResize.disconnect(); window.removeEventListener('resize', sizeCareerStack); reduced.removeEventListener('change', sizeCareerStack); };
   }, []);

@@ -88,10 +88,25 @@
 .toolkit-tile img.toolkit-logo-contrast{filter:brightness(0) invert(1)}
 @media(hover:hover) and (pointer:fine){.toolkit-tile:hover{transform:translateY(-4px);border-color:#eee0ff9c;background-color:#6742884d;box-shadow:0 12px 30px #0004,0 0 22px #bc87f51c,inset 0 1px #ffffff4d}.toolkit-tile:hover::before{transform:translateX(35%);opacity:1}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.toolkit-tile{background-color:#292132}}
-@media(max-width:1200px) and (min-width:601px){.toolkit-category:last-child .toolkit-grid{max-width:760px}}
+@media(max-width:1200px) and (min-width:601px){.toolkit-category:last-child .toolkit-grid{max-width:640px}}
 @media(max-width:700px){.tools-section{padding-top:48px;padding-bottom:52px}.toolkit-heading{display:block;text-align:center}.toolkit-heading h2{justify-content:center}.toolkit-heading p{font-size:16px;max-width:330px;margin:14px auto 0}.toolkit-categories{margin-top:36px;gap:30px}}
 @media(max-width:600px){.toolkit-grid{gap:12px}.toolkit-tile{flex-basis:calc(50% - 6px);gap:10px;padding:14px 12px;min-height:80px}.toolkit-tile img{width:36px;height:36px}.toolkit-category h3{letter-spacing:.08em}.toolkit-tile span{overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){.toolkit-tile,.toolkit-tile::before{transition:none}.toolkit-tile:hover{transform:none}.toolkit-tile:hover::before{transform:translateX(-35%)}}
+/* Each tile carries the tool name with a one-line purpose beneath it. */
+.toolkit-grid{max-width:1260px}
+.toolkit-tile{flex-basis:min(240px,calc((100% - 56px) / 5));min-height:86px}
+@media(max-width:1100px) and (min-width:601px){.toolkit-tile{flex-basis:calc(50% - 7px)}.toolkit-grid{max-width:640px}}
+.toolkit-tile span{display:grid;gap:3px;min-width:0;color:#d4c8e3;font-size:13px;font-weight:400;line-height:1.4}
+.toolkit-tile b{color:#f8f4ff;font-size:15px;font-weight:600;letter-spacing:-.01em}
+@media(max-width:1200px) and (min-width:1101px){.toolkit-category:last-child .toolkit-grid{max-width:none}}
+@media(max-width:600px){.toolkit-tile{flex-basis:100%;min-height:72px}.toolkit-tile span{font-size:12px}.toolkit-tile b{font-size:14px}}
+/* Tiles pop in one after another once the section is on screen. */
+@media(prefers-reduced-motion:no-preference){
+ .toolkit-categories[data-animate]:not(.is-visible) .toolkit-tile,.toolkit-categories[data-animate]:not(.is-visible) .toolkit-category h3{opacity:0}
+ .toolkit-categories.is-visible .toolkit-tile{animation:tile-in .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 70ms)}
+ .toolkit-categories.is-visible .toolkit-category h3{animation:tile-in .5s ease both}
+}
+@keyframes tile-in{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
 
 /* Frosted audience cards, with a shared image behind the glass. */
 .audience-section{position:relative;overflow:hidden;isolation:isolate;background:#f6f6f5;color:#19191b;padding:64px 5% 64px;border-radius:30px;margin-top:24px}
@@ -130,6 +145,64 @@
 .skip:focus{transform:none}
 .skip:not(:focus){clip-path:inset(50%)}
 .outline-title{-webkit-text-stroke:1.25px #aaa8ad}
+/* Experience card hierarchy: company, then role, then summary. */
+.career-top .company{font-size:clamp(22px,1.9vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin:0 0 8px;color:#f3f1ed}
+.career-top h3{font-size:16px;color:#c9b8de;line-height:1.4}
+.career-index{color:#f3f1ed}
+.career-meta{font-size:13px;gap:10px;padding-top:4px}
+.career-meta>span:first-child{color:#f3f1ed}
+.career-meta>span:last-child{font-size:11px;color:#aaa8ad}
+.job-summary{font-size:17px;line-height:1.65;color:#d9d6de;margin:24px 0 20px}
+.role-details-trigger{font-size:14px}
+.responsibilities li{font-size:15px}
+.skill-line{font-size:13px;gap:10px}
+.skill-line span{border:1px solid #4a4452;border-radius:999px;padding:6px 14px;color:#d7c8ea;background:#ffffff08}
+/* Education: pinned intro with a summary, bold school names, and a dotted timeline. */
+.education-summary{display:flex;align-items:center;gap:20px;margin:48px 0 0;padding-top:28px;border-top:1px solid #3e3c43}
+.education-summary strong{font-size:clamp(52px,5vw,76px);font-weight:900;letter-spacing:-.06em;line-height:.9;color:#f3f1ed}
+.education-summary span{display:grid;gap:4px;font-size:15px;color:#aaa8ad}
+.education-summary b{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.education-span{display:flex;align-items:center;gap:14px;margin:26px 0 0;font-size:13px;color:#aaa8ad;max-width:340px}
+.education-span i{flex:1;height:1px;background:linear-gradient(90deg,#4f4d55,var(--primary))}
+.education-list{position:relative;padding-left:40px}
+.education-list article{position:relative}
+.education-list article::before{content:'';position:absolute;left:-34px;top:28px;width:11px;height:11px;border-radius:50%;border:1px solid var(--primary);background:#0b0b0d;box-sizing:border-box}
+.education-list article:first-child::before{background:var(--primary);box-shadow:0 0 0 5px #ad72ff26}
+.education-list article:not(:last-child)::after{content:'';position:absolute;left:-29px;width:1px;top:48px;bottom:-19px;background:linear-gradient(#ad72ff,#4f4d55);transform:scaleY(var(--draw,1));transform-origin:top}
+.education-list article::before{transition:background .35s ease,box-shadow .35s ease,transform .35s ease}
+.education-list article.is-reached::before{background:var(--primary);box-shadow:0 0 0 5px #ad72ff26}
+@media(prefers-reduced-motion:no-preference){
+ /* A soft light runs down the drawn line; the current dot breathes. */
+ .education-list article:not(:last-child)::after{width:2px;left:-29.5px;background:linear-gradient(transparent,#e7d4ff 50%,transparent) 0 -60px/100% 60px no-repeat,linear-gradient(#ad72ff,#4f4d55);animation:timeline-flow 2.4s ease-in-out infinite}
+ .education-list article:first-child::before{animation:timeline-breathe 2.4s ease-in-out infinite}
+ .education-list article.is-reached::before{animation:timeline-pop .5s cubic-bezier(.3,1.6,.5,1)}
+}
+@keyframes timeline-flow{to{background-position:0 calc(100% + 60px),0 0}}
+@keyframes timeline-breathe{50%{box-shadow:0 0 0 9px #ad72ff14}}
+@keyframes timeline-pop{50%{transform:scale(1.5)}}
+.education-meta{align-items:baseline}
+.education-meta>span:first-child{font-size:16px;font-weight:700;letter-spacing:-.01em;color:#f3f1ed}
+.education-meta>span:last-child{font-size:13px;color:#c7c4ce}
+@media(min-width:701px){
+ .education-intro{position:sticky;top:48px;align-self:start}
+}
+@media(max-width:700px){
+ .education h2{margin-bottom:0}
+ .education-summary{margin-top:28px;padding-top:20px}
+ .education-span{margin:18px 0 36px}
+ .education-list{padding-left:30px}
+ .education-list article::before{left:-30px}
+ .education-list article:not(:last-child)::after{left:-25px}
+ .education-meta>span:first-child{font-size:15px}
+}
+@media(max-width:700px){
+ .career-top .company{font-size:19px}
+ .career-top h3{font-size:14px}
+ .career-meta{padding-top:0;font-size:12px}
+ .job-summary{font-size:15px}
+ .skill-line{font-size:12px;gap:8px}
+ .skill-line span{padding:5px 12px}
+}
 @media(max-width:700px){
  .header nav{font-size:12px;letter-spacing:0}
  .header nav a{padding:18px 0}
@@ -160,4 +233,17 @@
  .career-list[data-stack=true] .career-4{top:calc(var(--stack-top,24px) + 80px)}
  .career-list[data-stack=true]:has([aria-expanded=true])::after,.career-list[data-stack=true]:has(:focus-visible)::after{height:0}
  .career-list[data-stack=true]:has([aria-expanded=true]) .career-entry,.career-list[data-stack=true]:has(:focus-visible) .career-entry{position:relative;top:auto;min-height:0;box-shadow:none}
+ /* Cards share the tallest card's height, so keep content anchored and let spare space sit above the skills. */
+ .career-list[data-stack=true] .career-entry{display:flex;flex-direction:column}
+ .career-list[data-stack=true] .career-body{flex:1;display:flex;flex-direction:column}
+ .career-list[data-stack=true] .skill-line{margin-top:auto;padding-top:23px}
+}
+
+/* Wide screens: the campaign result sits beside the text instead of stretching every card in the deck. */
+@media(min-width:1001px){
+ .career-list .career-body:has(.result){display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);column-gap:48px;align-content:start}
+ .career-body:has(.result)>*{grid-column:1}
+ .career-body:has(.result) .result{grid-column:2;grid-row:1 / span 3;align-self:start;margin-top:29px;flex-direction:column;align-items:flex-start;gap:14px}
+ .career-body:has(.result) .result strong{font-size:clamp(44px,4vw,60px);line-height:1}
+ .career-list[data-stack=true] .career-body:has(.result) .skill-line{align-self:end}
 }
