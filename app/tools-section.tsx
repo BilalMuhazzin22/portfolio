@@ -46,7 +46,7 @@ export function ToolsSection() {
               className={tool.id === 'openai' || tool.id === 'wordpress' ? 'toolkit-logo-contrast' : undefined}
               src={`/tool-logos/${tool.logo}`} alt="" width="44" height="44" loading="lazy"
             />
-            <span><b>{tool.name}</b>{tool.use}</span>
+            <span><b>{tool.name}</b><span className="toolkit-use">{tool.use}</span></span>
           </li>)}
         </ul>
       </div>)}
